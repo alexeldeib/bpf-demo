@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: &name bpf-demo
+  labels:
+    app: *name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: *name
+  template:
+    metadata:
+      labels:
+        app: *name
+    spec:
+      # nodeSelector:
+      #   node-role.kubernetes.io/master: ''
+      # tolerations:
+      #   - key: "node-role.kubernetes.io/master" # useful to run on masters to investigate etcd latency
+      #     operator: "Exists"
+      #
+      # # above OR below needed ONLY, not both
+      # #
+      # affinity:
+      #   nodeAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       nodeSelectorTerms:
+      #       - matchExpressions:
+      #         - key: node-role.kubernetes.io/master
+      #           operator: Exists
+      # affinity:
+      #   podAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #     - labelSelector:
+      #         matchExpressions:
+      #         - key: app
+      #           operator: In
+      #           values:
+      #           - draft-oms
+      #       topologyKey: "kubernetes.io/hostname"
+      # certain iotop and bpftrace/bcc tools require hostNetowrk and hostPID
+      hostNetwork: true
+      hostPID: true
+      containers:
+      - image: alexeldeib/bpftrace:latest
+        name: bpf
+        command: ["sleep", "infinity"]
+        resources: {}
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /lib/modules
+          name: mod
+        - mountPath: /usr/src
+          name: src
+        - mountPath: /sys
+          name: sys
+      volumes:
+      - hostPath:
+          path: /lib/modules
+          type: ""
+        name: mod
+      - hostPath:
+          path: /usr/src
+          type: ""
+        name: src
+      - hostPath:
+          path: /sys
+          type: ""
+        name: sys

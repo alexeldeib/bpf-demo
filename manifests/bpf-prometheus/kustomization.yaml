@@ -1,0 +1,4 @@
+resources:
+- github.com/alexeldeib/azsvc/workloads/prometheus?ref=ace/svc-dev
+- github.com/alexeldeib/azsvc/workloads/certmanager?ref=ace/svc-dev
+- github.com/alexeldeib/azsvc/workloads/bpf_exporter?ref=ace/svc-dev
