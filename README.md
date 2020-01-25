@@ -2,7 +2,9 @@
 
 ## Quick Start
 
-Deploy the pre-built docker image container bpftrace and libbcc to a Kubernetes cluster:
+Prerequisites: a Kubernetes cluster
+
+Deploy the pre-built docker image container with bpftrace and libbcc to a Kubernetes cluster:
 
 ```
 kubectl apply -f ./manifests/bpftrace/deploy.yaml
@@ -53,6 +55,32 @@ Attaching 2 probes...
     - ebpf tools: http://www.brendangregg.com/ebpf.html
     - flamegraphs: http://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html
     - bpf perf tools book (available free online via oreilly): http://www.brendangregg.com/bpf-performance-tools-book.html
+
+## Example tools
+
+The pre-built container comes preloaded with both the bpftrace and bcc version of several commonly used tools. You can see a full listing of each set for bcc [here](https://github.com/iovisor/bcc/tree/master/tools) and for bpftrace [here](https://github.com/iovisor/bpftrace/tree/master/tools).
+
+Note that the bcc versions of these tools on Ubuntu have slightly different naming -- for example, for biolatency, the naming scheme would be:
+```
+biolatency.bt -> bpftrace program
+biolatency-bpfcc -> python executable invoking bcc
+```
+
+Basically, append -bpfcc to the name of the tool.
+
+```
+host:/# funcslower-bpfcc -m 10 vfs_read
+Tracing function calls slower than 10 ms... Ctrl+C to quit.
+COMM           PID    LAT(ms)             RVAL FUNC
+bash           16990    10.48               43 vfs_read
+bash           16990    13.02               4f vfs_read
+tee            17014    15.31               86 vfs_read
+lsof           17029    15.14              274 vfs_read
+lsof           17030    45.13                0 vfs_read
+bash           16990    64.74                0 vfs_read
+tee            17014    65.78               6a vfs_read
+kubelet        4013    116.35               70 vfs_read
+```
 
 ## Prometheus Integration
 
