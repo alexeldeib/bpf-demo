@@ -391,13 +391,13 @@ TIME(s)     COMM           PID    DISK    T SECTOR     BYTES  QUE(ms) LAT(ms)
 8.581532    fio            59558  sda     W 24036464   4096      0.00   44.27
 8.581551    fio            59558  sda     R 27106192   4096      0.00   44.31
 8.581576    fio            59557  sda     R 16657568   4096      0.00   44.30
+```
+
+biotop can provide similar information and filter only to the top few events, plus refresh on an interval.
 
 ```bash
 root@aks-nodepool1-14345218-vmss000003:/# biotop-bpfcc
 Tracing... Output every 1 secs. Hit Ctrl-C to end
-biotop can provide similar information and filter only to the top few events, plus refresh on an interval.
-
-```bash
 08:04:11 loadavg: 1.48 0.87 0.45 1/287 14547
 
 PID    COMM             D MAJ MIN DISK       I/O  Kbytes  AVGms
