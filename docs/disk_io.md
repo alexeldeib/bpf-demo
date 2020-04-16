@@ -10,7 +10,7 @@ These steps may also be performed from a local machine with the tools installed.
 
 IO in Linux passes through a virtual filesystem layer, the actual filesystem, the block device interface, the block layer, and finally the physical device. Filesystems perform caching to decrease latency and increase overall performance.
 
-When devices are saturated we do expect to see bimodal distributions in latencies, as requests begin to diverege into those immediately serviceable and those for which we must wait. This is a clear sign of potential issues. This can be observed both at the filesystem layer and at the block layer.
+When devices are saturated we expect to see bimodal distributions in latencies, as requests begin to diverege into those immediately serviceable and those for which we must wait. This is a clear sign of potential issues. This can be observed both at the filesystem layer and at the block layer.
 
 Additionally we want to see a high cache hit rate on the filesystem. A low cache hit rate may be characteristic of the workload, but it's a signal for potential further investigation. We expect to see low cache hit reflected by higher block device output, since that work cannot be served out of cache.
 
@@ -165,7 +165,7 @@ TIME     COMM           PID    T BYTES   OFF_KB   LAT(ms) FILENAME
 
 Cachestat provides output about cache hit percentage, dirty blocks, cache hits, and amount of data read from cache. We generally want to see a high cache hit rate, and also see this reflected in filesystem IO vs disk IO (filesystem IO should be much higher if caching is working).
 
-We provide output for an unloaded and loaded system. On the unloaded system, cache hit rate is a solid 100%. On the loaded system, we see it's 100% before the workload kicks in, and then it plummets to zero. This was a synthetic fio workload with a 60/40 read write mix. T
+We provide output for an unloaded and loaded system. On the unloaded system, cache hit rate is a solid 100%. On the loaded system, we see it's 100% before the workload kicks in, and then it plummets to zero. This was a synthetic fio workload with a 60/40 read write mix.
 
 ```bash
 root@aks-nodepool1-14345218-vmss000003:/# cachestat-bpfcc 
