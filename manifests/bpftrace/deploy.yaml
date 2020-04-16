@@ -43,7 +43,7 @@ spec:
       hostNetwork: true
       hostPID: true
       containers:
-      - image: alexeldeib/bpftrace:latest
+      - image: alexeldeib/bpf-demo:latest
         name: bpf
         command: ["sleep", "infinity"]
         resources: {}
