@@ -250,6 +250,8 @@ The top chart is an unloaded system. The middle chart is a sytem with fio runnin
 
 If we switch fio to direct IO, we will immediately see the latency spike as we get throttled on IOPS. This is third chart.
 
+The middle chart shows a good example of the filesystem layer with caching shielding the underlying block devices from heavier IO. This shield is removed in the last graph, and we saw the raw disk devices suffer immediately.
+
 ```bash
 root@aks-nodepool1-14345218-vmss000003:/# biolatency-bpfcc -D
 Tracing block device I/O... Hit Ctrl-C to end.
