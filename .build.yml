@@ -47,5 +47,3 @@ tasks:
     cat ~/.docker_pass | sudo docker login -u $(cat ~/.docker_user) --password-stdin
     
     ./build/build.sh
-
-
