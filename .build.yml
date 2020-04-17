@@ -1,15 +1,11 @@
 image: debian/buster
-environment:
-  GITHUB_DELIVERY: 14eb7d04-7dce-11ea-9ece-ee773dea201e
-  GITHUB_EVENT: push
-  GITHUB_REF: refs/heads/master
-  GITHUB_REPO: alexeldeib/az-local-pvc
-  IMAGE: az-local-pvc
+  IMAGE: bpf-demo
   REPO: docker.io/alexeldeib
 packages:
 - curl
 - gpg
 - apt-transport-https
+- fio
 repositories: null
 secrets:
 - 7bb48981-fc03-4344-bae3-736c99f94f49
@@ -24,3 +20,22 @@ tasks:
     ~/bpf-demo/build/build.sh
 - introspect: |
     lsblk
+    blkid
+    fio
+
+    tee job > /dev/null <<EOF
+    [global]
+    name=fio-rand-RW
+    ioengine=libaio
+    rw=randrw
+    rwmixread=60
+    bs=4K
+    direct=1
+    time_based=1
+    runtime=30
+    iodepth=64
+    size=4G
+    numjobs=2
+    EOF
+
+    fio job
