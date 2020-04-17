@@ -39,3 +39,5 @@ tasks:
     sudo docker push ${REPO}/${IMAGE}:${TAG}
     sudo docker push ${REPO}/${IMAGE}:latest
     docker images
+- introspect: |
+    lsblk
