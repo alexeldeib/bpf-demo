@@ -16,7 +16,7 @@ secrets:
 - 21bdadaa-095c-4968-9a6e-ce9b795042b4
 shell: null
 sources:
-- https://github.com/alexeldeib/az-local-pvc.git#d97fd95bf8a093e2eca6ba90ae073ed336806262
+- https://github.com/alexeldeib/bpf-demo
 tasks:
 - install: |
     set -o errexit
@@ -27,7 +27,7 @@ tasks:
     set -o nounset
     set -o pipefail
 
-    cd ~/az-local-pvc
+    cd ~/bpf-demo
 
     # systemd drop-in for docker networking
     sudo mkdir -p /etc/systemd/system/docker.service.d
