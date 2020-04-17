@@ -16,27 +16,6 @@ sources:
 - https://github.com/alexeldeib/bpf-demo
 tasks:
 - install: |
-    ~/bpf-demo/build/setup_docker.sh
+    bash ~/bpf-demo/build/setup_docker.sh
 - build: |
-    ~/bpf-demo/build/build.sh
-- introspect: |
-    lsblk
-    blkid
-    fio
-
-    tee job > /dev/null <<EOF
-    [global]
-    name=fio-rand-RW
-    ioengine=libaio
-    rw=randrw
-    rwmixread=60
-    bs=4K
-    direct=1
-    time_based=1
-    runtime=30
-    iodepth=64
-    size=4G
-    numjobs=2
-    EOF
-
-    fio job
+    bash ~/bpf-demo/build/build.sh
