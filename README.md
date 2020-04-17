@@ -1,3 +1,5 @@
+[![builds.sr.ht status](https://builds.sr.ht/~alexeldeib/bpf-demo/.build.yml.svg)](https://builds.sr.ht/~alexeldeib/bpf-demo/.build.yml?)
+
 # bpftrace + bcc performance analysis tools
 
 ## Quick Start
