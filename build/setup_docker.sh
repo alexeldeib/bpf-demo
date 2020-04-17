@@ -5,7 +5,7 @@ set -o pipefail
 
 # systemd drop-in for docker networking
 sudo mkdir -p /etc/systemd/system/docker.service.d
-sudo cp "~/${APP}/build/10-docker-net.conf" /etc/systemd/system/docker.service.d/10-docker-net.conf
+sudo cp "/home/build/${APP}/build/10-docker-net.conf" /etc/systemd/system/docker.service.d/10-docker-net.conf
 
 ## gpg key
 curl -fsSl https://download.docker.com/linux/ubuntu/gpg -o gpg.asc
