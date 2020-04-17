@@ -1,5 +1,4 @@
-arch: null
-artifacts: null
+image: debian/buster
 environment:
   GITHUB_DELIVERY: 14eb7d04-7dce-11ea-9ece-ee773dea201e
   GITHUB_EVENT: push
@@ -7,9 +6,10 @@ environment:
   GITHUB_REPO: alexeldeib/az-local-pvc
   IMAGE: az-local-pvc
   REPO: docker.io/alexeldeib
-image: archlinux
 packages:
-- docker
+- curl
+- gpg
+- apt-transport-https
 repositories: null
 secrets:
 - 7bb48981-fc03-4344-bae3-736c99f94f49
