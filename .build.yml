@@ -42,7 +42,7 @@ tasks:
     echo "deb [arch=amd64] https://download.docker.com/linux/${DISTRO} ${CODENAME} stable" \
       | sudo tee /etc/apt/sources.list.d/docker.list
 
-    sudo apt update && sudo apt install docker-ce
+    sudo apt update && sudo apt install -y docker-ce
 
     cat ~/.docker_pass | sudo docker login -u $(cat ~/.docker_user) --password-stdin
     
