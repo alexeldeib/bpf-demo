@@ -3,11 +3,11 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-cd ~/bpf-demo/images/bpftrace
+cd "~/${APP}/images/bpftrace"
 TAG="$(date -Iseconds | tr :+ -)"
 echo "TAG: ${TAG}"
-sudo docker build -t ${REPO}/${IMAGE}:${TAG} .
-sudo docker tag ${REPO}/${IMAGE}:${TAG} ${REPO}/${IMAGE}:latest
-sudo docker push ${REPO}/${IMAGE}:${TAG}
-sudo docker push ${REPO}/${IMAGE}:latest
+sudo docker build -t ${REPO}/${APP}:${TAG} .
+sudo docker tag ${REPO}/${APP}:${TAG} ${REPO}/${APP}:latest
+sudo docker push ${REPO}/${APP}:${TAG}
+sudo docker push ${REPO}/${APP}:latest
 docker images
