@@ -19,5 +19,7 @@ echo "deb [arch=amd64] https://download.docker.com/linux/${DISTRO} ${CODENAME} s
 # install docker
 sudo apt update && sudo apt install -y docker-ce
 
+sudo usermod -aG docker $(whoami)
+
 # login
 cat ~/.docker_pass | sudo docker login -u "$(cat ~/.docker_user)" --password-stdin
