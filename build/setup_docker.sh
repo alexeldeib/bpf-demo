@@ -11,6 +11,8 @@ sudo sh -c 'cat >/etc/docker/daemon.json <<EOF
 }
 EOF'
 
+sudo cat /etc/docker/daemon.json
+
 ## gpg key
 curl -fsSl https://download.docker.com/linux/ubuntu/gpg -o gpg.asc
 sudo apt-key add gpg.asc
