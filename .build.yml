@@ -1,4 +1,4 @@
-image: ubuntu:latest
+image: debian/testing
 environment:
   APP: bpf-demo
   REPO: docker.io/alexeldeib
