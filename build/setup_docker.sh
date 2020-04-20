@@ -5,11 +5,11 @@ set -o pipefail
 
 # systemd drop-in for docker networking
 sudo mkdir -p /etc/docker
-sudo -s cat >/etc/docker/daemon.json <<EOF
+sudo sh -c 'cat >/etc/docker/daemon.json <<EOF
 {
 	"bip": "172.18.0.1/16"
 }
-EOF
+EOF'
 
 ## gpg key
 curl -fsSl https://download.docker.com/linux/ubuntu/gpg -o gpg.asc
