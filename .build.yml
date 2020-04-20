@@ -1,4 +1,4 @@
-image: debian/testing
+image: debian/buster
 environment:
   APP: bpf-demo
   REPO: docker.io/alexeldeib
