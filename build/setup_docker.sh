@@ -5,7 +5,7 @@ set -o pipefail
 
 # systemd drop-in for docker networking
 sudo mkdir -p /etc/docker
-cat >/etc/docker/daemon.json <<EOF
+sudo cat >/etc/docker/daemon.json <<EOF
 {
 	"bip": "172.18.0.1/16"
 }
