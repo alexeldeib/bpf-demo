@@ -49,7 +49,7 @@ These look fairly empty.
 
 ### File System Latency
 
-Using ext4slower we can get a high level view of filesystem activity.
+Using ext4dist we can get a high level view of filesystem activity.
 
 The first example is from a system with no activity. The second system has fio running a high queue depth job with 60/40 read/write split. 
 
