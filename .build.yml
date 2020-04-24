@@ -15,7 +15,7 @@ shell: null
 sources:
 - https://github.com/alexeldeib/bpf-demo
 tasks:
-# - install: |
-#     bash ~/bpf-demo/build/setup_docker.sh
+- install: |
+    bash ~/bpf-demo/build/setup_docker.sh
 - build: |
     bash ~/bpf-demo/build/build.sh
